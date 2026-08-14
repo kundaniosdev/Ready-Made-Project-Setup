@@ -1,0 +1,44 @@
+{
+    "success": true,
+    "message": "All Tickets fetched successfully.",
+    "data": {
+        "docs": [
+            {
+                "id": "6a7e023e6303129d56a40000",
+                "ticketId": "BUG-2026-000001",
+                "platform": "IOS",
+                "priority": "HIGH",
+                "status": "OPEN",
+                "createdAt": "2026-08-13T17:43:26.337Z",
+                "timeline": [
+                    {
+                        "_id": "6a7e02406303129d56a40009",
+                        "ticket": "6a7e023e6303129d56a40000",
+                        "eventType": "MEDIA_UPLOADED",
+                        "previousValue": null,
+                        "newValue": null,
+                        "performedBy": null,
+                        "comment": "1 media file(s) uploaded.",
+                        "createdAt": "2026-08-13T17:43:28.033Z",
+                        "updatedAt": "2026-08-13T17:43:28.033Z"
+                    },
+                    {
+                        "_id": "6a7e023e6303129d56a40002",
+                        "ticket": "6a7e023e6303129d56a40000",
+                        "eventType": "CREATED",
+                        "previousValue": null,
+                        "newValue": null,
+                        "performedBy": null,
+                        "comment": "Ticket created",
+                        "createdAt": "2026-08-13T17:43:26.485Z",
+                        "updatedAt": "2026-08-13T17:43:26.485Z"
+                    }
+                ]
+            }
+        ],
+        "total": 1,
+        "page": 1,
+        "limit": 10,
+        "totalPages": 1
+    }
+}
