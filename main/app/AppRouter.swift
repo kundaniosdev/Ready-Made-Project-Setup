@@ -20,7 +20,7 @@ protocol NavigationDestination {
     var destinationView:Destination { get }
 }
 
-class Router<Destination:NavigationDestination>: ObservableObject {
+class Router<Destination: NavigationDestination & Hashable>: ObservableObject {
     @Published var navPaths:[Destination] = []
     
     func navigate(_ destination:Destination) {
