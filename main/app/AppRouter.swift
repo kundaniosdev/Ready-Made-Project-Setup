@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftUI
-        
+import Combine
 //  MARK: - BASE INFRASTRUCTURE
 //  Provides the core generic Router<T> engine and NavigationDestination protocol
 //  used by all feature-specific routers in the app for type-safe SwiftUI navigation.

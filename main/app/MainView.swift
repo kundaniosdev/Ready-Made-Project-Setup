@@ -19,6 +19,7 @@ struct MainView: View {
     }
 }
 
+// Preview 
 #Preview {
-    RootView()
+    MainView()
 }

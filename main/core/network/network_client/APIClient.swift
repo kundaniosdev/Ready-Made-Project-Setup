@@ -40,7 +40,7 @@ final class APIClient: APIClientProtocol {
             let (data, response) = try await session.data(for: request)
             
             // Log API details (Request URL, headers, body, response status, response body)
-            APILogger.log(request: request, response: response, data: data)
+        //    APILogger.log(request: request, response: response, data: data)
             
             // Validate response
             guard let httpResponse = response as? HTTPURLResponse else {
@@ -150,16 +150,8 @@ struct Request_Builder {
         
         // Add body if needed
         if let body = endpoint.httpBody {
-            do {
-                if let mediaReq = body as? MediaUploadRequest {
-                    request.httpBody = mediaReq.multipartBody
-                } else {
-                    request.httpBody = try encoder.encode(body)
-                    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-                }
-            } catch {
-                throw DataError.invalidRequest
-            }
+            request.httpBody = try encoder.encode(body)
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         }
         
         // Add headers

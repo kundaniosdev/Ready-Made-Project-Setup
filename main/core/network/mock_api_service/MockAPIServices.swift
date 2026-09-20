@@ -4,7 +4,7 @@
 //
 //  Created by ibarts on 17/07/26.
 //
-
+import Foundation 
 final class MockAPIClient: APIClientProtocol {
 
     var shouldShowError: Bool = false

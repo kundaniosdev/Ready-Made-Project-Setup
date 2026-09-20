@@ -12,14 +12,6 @@ final class MockEnvironmentServices {
 
     static let shared = MockEnvironmentServices()
 
-    let bluetoothManager = BluetoothManager()
-    let userViewModel = UserViewModel()
-    let viewRouter = ViewRouter()
-    let currentStationVM = CurrentStationVM()
-    let networkMonitor = NetworkMonitor()
-    let menuRouter: MenuRouter = MenuRouter()
-    let cuttingSawsVM = CuttingStationSawsVM()
-    let routingStationVM = RoutingStationVM()
-
+   
     private init() { }
 }
