@@ -7,23 +7,32 @@
 
 import Foundation
 import SwiftUI
-        
+import Combine
+
 //  MARK: - BASE INFRASTRUCTURE
 //  Provides the core generic Router<T> engine and NavigationDestination protocol
 //  used by all feature-specific routers in the app for type-safe SwiftUI navigation.
 
-protocol NavigationDestination {
-    associatedtype Destination:View
-    var title:String { get }
+protocol NavigationDestination: Hashable {
+    associatedtype Destination: View
+    var title: String { get }
     
     @ViewBuilder
-    var destinationView:Destination { get }
+    var destinationView: Destination { get }
 }
 
-class Router<Destination:NavigationDestination>: ObservableObject {
-    @Published var navPaths:[Destination] = []
+final class Router<Destination: NavigationDestination>: ObservableObject {
+    @Published var navPaths: [Destination] = []
     
-    func navigate(_ destination:Destination) {
+    init() {
+        print("🟢[ARC] Router<\(Destination.self)> ALLOCATED")
+    }
+    
+    deinit {
+        print("🔴[ARC] Router<\(Destination.self)> DEALLOCATED")
+    }
+    
+    func navigate(_ destination: Destination) {
         navPaths.append(destination)
     }
     
@@ -33,7 +42,29 @@ class Router<Destination:NavigationDestination>: ObservableObject {
     }
     
     func navigateToRoot() {
-        navPaths.removeLast(navPaths.count)
+        navPaths.removeAll()
+    }
+}
+
+// MARK: - App Session State
+final class AppSessionManager: ObservableObject {
+    static let shared = AppSessionManager()
+    
+    @Published var currentUser: User?
+    
+    init() {
+        print("🟢[ARC] AppSessionManager ALLOCATED")
     }
     
+    deinit {
+        print("🔴[ARC] AppSessionManager DEALLOCATED")
+    }
+    
+    func login(user: User) {
+        currentUser = user
+    }
+    
+    func logout() {
+        currentUser = nil
+    }
 }

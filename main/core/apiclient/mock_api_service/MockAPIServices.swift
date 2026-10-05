@@ -1,9 +1,11 @@
 //
 //  MockAPIServices.swift
-//  FrameInvaders
+//  ReadyMadeProjectSetup
 //
 //  Created by ibarts on 17/07/26.
 //
+
+import Foundation
 
 final class MockAPIClient: APIClientProtocol {
 
@@ -17,7 +19,7 @@ final class MockAPIClient: APIClientProtocol {
                 code: 500,
                 userInfo: [NSLocalizedDescriptionKey: "Mock API Failure"]
             )
-        }else {
+        } else {
             return try loadJson(filename: type.mockFileName)
         }
     }
@@ -43,5 +45,4 @@ extension MockAPIClient {
 
         throw DataError.invalidURL
     }
-
 }

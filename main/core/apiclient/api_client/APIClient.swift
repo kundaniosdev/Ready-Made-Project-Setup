@@ -222,3 +222,21 @@ struct Parse_Error_Messege {
         return nil
     }
 }
+
+// MARK: - API Logger
+struct APILogger {
+    static func log(request: URLRequest, response: URLResponse, data: Data) {
+        #if DEBUG
+        print("➡️ [API Request] \(request.httpMethod ?? ""): \(request.url?.absoluteString ?? "")")
+        if let httpResponse = response as? HTTPURLResponse {
+            print("⬅️ [API Response] Status: \(httpResponse.statusCode)")
+        }
+        #endif
+    }
+}
+
+// MARK: - Media Upload Request
+protocol MediaUploadRequest {
+    var multipartBody: Data { get }
+}
+
